@@ -1,7 +1,7 @@
 {
-  "name": "warp-evm-signature",
+  "name": "warp-signature",
   "version": "1.0.0-alpha.0",
-  "main": "./build/cli.js",
+  "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --ext .ts",
@@ -25,8 +25,7 @@
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
     "@metamask/providers": "^10.0.0",
-    "arweave": "^1.11.6",
-    "warp-contracts": "^1.2.13"
+    "arweave": "^1.11.6"
   },
   "engines": {
     "node": ">=16.5"

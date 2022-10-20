@@ -1,1 +1,1 @@
-export { evmSignature } from './web/signature';
+export { evmSignature } from './web/evmSignature';
