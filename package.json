@@ -1,6 +1,6 @@
 {
   "name": "warp-signature",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
@@ -30,6 +30,9 @@
   "engines": {
     "node": ">=16.5"
   },
+  "files": [
+    "build/"
+  ],
   "bugs": {
     "url": "https://github.com/warp-contracts/evm-signatures/issues"
   },
