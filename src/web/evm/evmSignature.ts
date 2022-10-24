@@ -1,7 +1,9 @@
 import { MetaMaskInpageProvider } from '@metamask/providers';
 import Transaction from 'arweave/node/lib/transaction';
-import { encodeTxId } from '../utils';
+import { encodeTxId } from '../../utils';
 import MetaMaskOnboarding from '@metamask/onboarding';
+import { stringify } from 'safe-stable-stringify';
+import { Interaction } from './evmSignatureVerification';
 
 declare global {
   interface Window {
@@ -19,9 +21,23 @@ export const evmSignature = async (tx: Transaction) => {
 
   tx.owner = accounts[0];
   tx.addTag('Signature-Type', 'ethereum');
+
+  const interaction: Interaction = {
+    id: tx.id,
+    owner: { address: tx.owner },
+    recipient: tx.target,
+    tags: tx.tags,
+    fee: {
+      winston: tx.reward
+    },
+    quantity: {
+      winston: tx.quantity
+    }
+  };
+
   tx.signature = await window.ethereum.request<string>({
     method: 'personal_sign',
-    params: [accounts[0], JSON.stringify(tx)]
+    params: [accounts[0], stringify(interaction)]
   });
 
   tx.id = await encodeTxId(tx.signature);

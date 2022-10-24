@@ -25,7 +25,10 @@
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
     "@metamask/providers": "^10.0.0",
-    "arweave": "^1.11.6"
+    "arweave": "^1.11.6",
+    "ethers": "^5.7.2",
+    "safe-stable-stringify": "^2.4.1",
+    "warp-contracts": "file:.yalc/warp-contracts"
   },
   "engines": {
     "node": ">=16.5"
