@@ -2,6 +2,8 @@ import { GQLNodeInterface } from 'warp-contracts';
 import { WarpPlugin, WarpPluginType } from 'warp-contracts/lib/types/core/WarpPlugin';
 import { ethers } from 'ethers';
 import { stringify } from 'safe-stable-stringify';
+import { Tag } from 'arweave/node/lib/transaction';
+import { stringToB64Url } from 'arweave/node/lib/utils';
 
 export interface Interaction {
   id: string;
@@ -18,11 +20,18 @@ export interface Interaction {
 
 export class EvmSignatureVerificationPlugin implements WarpPlugin<GQLNodeInterface, boolean> {
   process(input: GQLNodeInterface): boolean {
+    let encodedTags = [];
+
+    for (const tag of input.tags) {
+      try {
+        encodedTags.push(new Tag(stringToB64Url(tag.name), stringToB64Url(tag.value)));
+      } catch (e) {}
+    }
     const interaction: Interaction = {
       id: input.id,
       owner: { address: input.owner.address },
       recipient: input.recipient,
-      tags: input.tags,
+      tags: encodedTags,
       fee: {
         winston: input.fee.winston
       },
@@ -33,6 +42,7 @@ export class EvmSignatureVerificationPlugin implements WarpPlugin<GQLNodeInterfa
 
     try {
       const recoveredAddress: string = ethers.utils.verifyMessage(stringify(interaction), input.signature);
+
       return recoveredAddress === input.owner.address;
     } catch (e) {
       return false;

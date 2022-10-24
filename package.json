@@ -1,6 +1,6 @@
 {
   "name": "warp-signature",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.1-alpha.3",
   "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
@@ -28,7 +28,7 @@
     "arweave": "^1.11.6",
     "ethers": "^5.7.2",
     "safe-stable-stringify": "^2.4.1",
-    "warp-contracts": "file:.yalc/warp-contracts"
+    "warp-contracts": "1.2.14-beta.3"
   },
   "engines": {
     "node": ">=16.5"

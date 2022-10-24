@@ -2957,8 +2957,10 @@ vm2@3.9.9:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-"warp-contracts@file:.yalc/warp-contracts":
-  version "1.2.13"
+warp-contracts@1.2.14-beta.1:
+  version "1.2.14-beta.1"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.14-beta.1.tgz#7c8e3a242b70eef5a766b893335b44fce0f91c89"
+  integrity sha512-7PVpprOT77SJ3XosvKeKJgjXpc2dfGL6aLO5WlE8FE4I3HQEqLaHT6lwDdYJmQ3WZMbdsYIb3lw4RZVuLCauXQ==
   dependencies:
     "@assemblyscript/loader" "^0.19.23"
     "@idena/vrf-js" "^1.0.1"
@@ -2970,7 +2972,6 @@ vm2@3.9.9:
     fast-copy "^2.1.1"
     knex "^0.95.14"
     level "^8.0.0"
-    lodash "^4.17.21"
     memory-level "^1.0.0"
     redstone-isomorphic "1.1.8"
     redstone-wasm-metering "1.0.3"
