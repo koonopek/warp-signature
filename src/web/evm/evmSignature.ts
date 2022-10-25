@@ -1,5 +1,5 @@
 import { MetaMaskInpageProvider } from '@metamask/providers';
-import Transaction from 'arweave/node/lib/transaction';
+import Transaction from 'arweave/web/lib/transaction';
 import { encodeTxId } from '../../utils';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { stringify } from 'safe-stable-stringify';
@@ -23,7 +23,6 @@ export const evmSignature = async (tx: Transaction) => {
   tx.addTag('Signature-Type', 'ethereum');
 
   const interaction: Interaction = {
-    id: tx.id,
     owner: { address: tx.owner },
     recipient: tx.target,
     tags: tx.tags,

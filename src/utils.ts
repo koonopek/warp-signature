@@ -1,4 +1,4 @@
-import { bufferTob64Url } from 'arweave/node/lib/utils';
+import { bufferTob64Url } from 'arweave/web/lib/utils';
 
 const fromHexString = (hexString: string): Uint8Array =>
   Uint8Array.from(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)));

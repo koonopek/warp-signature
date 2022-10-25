@@ -781,7 +781,7 @@ bech32@1.1.4:
   resolved "https://registry.yarnpkg.com/bech32/-/bech32-1.1.4.tgz#e38c9f37bf179b8eb16ae3a772b40c356d4832e9"
   integrity sha512-s0IrSOzLlbvX7yp4WBfPITzpAU8sqQcpsmwXDiKwrG4r491vwCO/XpejasRNl0piBMe/DvP4Tz0mIS/X1DPJBQ==
 
-bignumber.js@^9.0.1, bignumber.js@^9.0.2:
+bignumber.js@^9.0.2:
   version "9.1.0"
   resolved "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.1.0.tgz"
   integrity sha512-4LwHK4nfDOraBCtst+wOWIHbu1vhvAPJK8g8nROd4iuc3PSEjWif/qwbkh8jwCJz6yDBvtU4KPynETgrfh7y3A==
@@ -2957,16 +2957,15 @@ vm2@3.9.9:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.14-beta.1:
-  version "1.2.14-beta.1"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.14-beta.1.tgz#7c8e3a242b70eef5a766b893335b44fce0f91c89"
-  integrity sha512-7PVpprOT77SJ3XosvKeKJgjXpc2dfGL6aLO5WlE8FE4I3HQEqLaHT6lwDdYJmQ3WZMbdsYIb3lw4RZVuLCauXQ==
+warp-contracts@1.2.14-beta.6:
+  version "1.2.14-beta.6"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.14-beta.6.tgz#8330b60c380aaf69bda1da3f9906558a1b143dc5"
+  integrity sha512-hCS7KblfGrQIzrKdKRGpWmorHqbIIsGanNK1kAlhO3hwSCGXatkOr3WLG3s9eYgH4ATl2gnuctaYcdVZxPPSag==
   dependencies:
     "@assemblyscript/loader" "^0.19.23"
     "@idena/vrf-js" "^1.0.1"
     archiver "^5.3.0"
     arweave "1.11.6"
-    bignumber.js "^9.0.1"
     elliptic "^6.5.4"
     events "3.3.0"
     fast-copy "^2.1.1"
