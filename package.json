@@ -1,6 +1,6 @@
 {
   "name": "warp-signature",
-  "version": "1.0.1-alpha.10",
+  "version": "1.0.1",
   "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
