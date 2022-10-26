@@ -4,7 +4,7 @@ import { encodeTxId } from '../../utils';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { stringify } from 'safe-stable-stringify';
 import { Interaction } from './evmSignatureVerification';
-
+import { utils } from 'ethers';
 declare global {
   interface Window {
     ethereum?: MetaMaskInpageProvider;
@@ -19,8 +19,9 @@ export const evmSignature = async (tx: Transaction) => {
     method: 'eth_requestAccounts'
   });
 
-  tx.owner = accounts[0];
+  tx.owner = utils.getAddress(accounts[0]);
   tx.addTag('Signature-Type', 'ethereum');
+  tx.addTag('Nonce', Date.now().toString());
 
   const interaction: Interaction = {
     owner: { address: tx.owner },
