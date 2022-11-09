@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export const evmSignature = async (tx: Transaction) => {
+export const evmSignature = async (tx: Transaction): Promise<void> => {
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     throw new Error('Account could not be loaded. Metamask not detected');
   }
@@ -41,6 +41,4 @@ export const evmSignature = async (tx: Transaction) => {
   });
 
   tx.id = await encodeTxId(tx.signature);
-
-  return tx;
 };
