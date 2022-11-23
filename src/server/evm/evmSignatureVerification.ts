@@ -1,9 +1,9 @@
 import { GQLNodeInterface } from 'warp-contracts';
-import { WarpPlugin, WarpPluginType } from 'warp-contracts';
+import { WarpPlugin, WarpPluginType } from 'warp-contracts/lib/types/core/WarpPlugin';
 import { ethers } from 'ethers';
 import { stringify } from 'safe-stable-stringify';
-import Transaction, { Tag } from 'arweave/web/lib/transaction';
-import { stringToB64Url } from 'arweave/web/lib/utils';
+import Transaction, { Tag } from 'arweave/node/lib/transaction';
+import { stringToB64Url } from 'arweave/node/lib/utils';
 import { encodeTxId } from '../utils';
 
 export interface Interaction {
@@ -18,7 +18,9 @@ export interface Interaction {
   };
 }
 
-export class EvmSignatureVerificationWebPlugin implements WarpPlugin<GQLNodeInterface | Transaction, Promise<boolean>> {
+export class EvmSignatureVerificationServerPlugin
+  implements WarpPlugin<GQLNodeInterface | Transaction, Promise<boolean>>
+{
   async process(input: GQLNodeInterface | Transaction): Promise<boolean> {
     let encodedTags: Tag[] = [];
 
@@ -33,7 +35,7 @@ export class EvmSignatureVerificationWebPlugin implements WarpPlugin<GQLNodeInte
     let inputToVerify: Interaction | Transaction;
     const isTransaction = this.isTransactionType(input);
     if (isTransaction) {
-      inputToVerify = input;
+      inputToVerify = new Transaction({ ...input, id: '', signature: '' });
     } else {
       inputToVerify = {
         owner: { address: input.owner.address },
@@ -67,6 +69,6 @@ export class EvmSignatureVerificationWebPlugin implements WarpPlugin<GQLNodeInte
   }
 
   private isTransactionType(input: GQLNodeInterface | Transaction): input is Transaction {
-    return (input as Transaction) !== undefined;
+    return (input as Transaction).toJSON !== undefined;
   }
 }

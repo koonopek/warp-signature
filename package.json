@@ -1,13 +1,19 @@
 {
   "name": "warp-signature",
   "version": "1.0.2",
-  "main": "./build/index.js",
+  "main": "./build/web/index.js",
+  "exports": {
+    "./server": "./build/server/index.js",
+    ".": "./build/web/index.js"
+  },
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "build": "tsc -p ."
+    "compile:web": "tsc -p tsconfig.web.json",
+    "compile:server": "tsc -p tsconfig.server.json",
+    "build": "yarn compile:web && yarn compile:server"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -28,7 +34,7 @@
     "arweave": "^1.11.6",
     "ethers": "^5.7.2",
     "safe-stable-stringify": "^2.4.1",
-    "warp-contracts": "1.2.14-beta.6"
+    "warp-contracts": "1.2.20"
   },
   "engines": {
     "node": ">=16.5"
